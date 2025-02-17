@@ -7,7 +7,11 @@ type ProductPageProps = {
   };
 };
 
-const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
+const ProductPage: React.FC<ProductPageProps> = async ({
+  params,
+}: {
+  params: { productId: string };
+}) => {
   const product = await getProduct(params.productId);
 
   return <ProductDetails product={product} />;
