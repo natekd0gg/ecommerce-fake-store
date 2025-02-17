@@ -9,14 +9,14 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from './pagination';
+} from './Pagination';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from './select';
+} from './Select';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
