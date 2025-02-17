@@ -5,6 +5,7 @@ import { CartProvider } from '@/components/CartContext';
 import ToastProvider from '@/providers/toast-providers';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
+import { Suspense } from 'react';
 
 const font = Urbanist({ subsets: ['latin'] });
 
@@ -24,7 +25,7 @@ export default function RootLayout({
         <CartProvider>
           <ToastProvider />
           <Navbar />
-          {children}
+          <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
           <Footer />
         </CartProvider>
       </body>
