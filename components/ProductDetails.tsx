@@ -7,25 +7,17 @@ import Image from 'next/image';
 
 import { useCart } from './CartContext';
 import CustomButton from './ui/CustomButton';
-import { useEffect, useState } from 'react';
-import type { CartItem } from './CartContext';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface ProductDetailsProps {
-  product: any;
+  product: Product;
 }
 
 const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
   const { addItemToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   const router = useRouter();
-
-  const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseInt(e.target.value, 10);
-    if (value > 0) {
-      setQuantity(value);
-    }
-  };
 
   return (
     <div className="bg-white">

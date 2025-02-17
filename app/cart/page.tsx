@@ -2,15 +2,15 @@
 
 import { useCart } from '@/components/CartContext';
 import Container from '@/components/ui/Container';
-import CartItem from './components/cart-items';
 import Currency from '@/components/ui/Currency';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 import CustomButton from '@/components/ui/CustomButton';
+import CartItem from './components/cart-items';
 
 const CartPage: React.FC = () => {
-  const { cart, removeItemFromCart, removeAllItemsFromCart } = useCart();
+  const { cart, removeAllItemsFromCart } = useCart();
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -23,7 +23,7 @@ const CartPage: React.FC = () => {
   }, [searchParams, removeAllItemsFromCart]);
 
   const totalPrice = cart.reduce(
-    (total: any, item: any) => total + item.price * item.quantity,
+    (total: number, item: any) => total + item.price * item.quantity,
     0
   );
 
