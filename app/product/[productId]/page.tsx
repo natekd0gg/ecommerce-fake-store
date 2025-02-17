@@ -1,18 +1,11 @@
 import getProduct from '@/actions/GetProduct';
 import ProductDetails from '@/components/ProductDetails';
 
-type ProductPageProps = {
-  params: {
-    productId: string;
-  };
-};
+export type paramsType = Promise<{ productId: string }>;
 
-const ProductPage: React.FC<ProductPageProps> = async ({
-  params,
-}: {
-  params: { productId: string };
-}) => {
-  const product = await getProduct(params.productId);
+const ProductPage = async (props: { params: paramsType }) => {
+  const { productId } = await props.params;
+  const product = await getProduct(productId);
 
   return <ProductDetails product={product} />;
 };
